@@ -174,6 +174,7 @@ Puppet::Type.type(:user).provide :user_role_add, :parent => :useradd, :source =>
             line_arr = line.split(':')
             if line_arr[0] == @resource[:name]
               line_arr[1] = cryptopw
+              line_arr[2] = Time.now.to_i / 86400
               line = line_arr.join(':')
             end
             shadow_tmp.print line
